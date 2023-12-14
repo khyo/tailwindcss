@@ -11,6 +11,8 @@ import detectNesting from './lib/detectNesting'
 import { createContext } from './lib/setupContextUtils'
 import { issueFlagNotices } from './featureFlags'
 
+export const mod = { ctx(c) { } }
+
 export default function processTailwindFeatures(setupContext) {
   return async function (root, result) {
     let { tailwindDirectives, applyDirectives } = normalizeTailwindDirectives(root)
@@ -35,6 +37,8 @@ export default function processTailwindFeatures(setupContext) {
         return createContext(tailwindConfig, changedContent, root)
       },
     })(root, result)
+    
+    mod.ctx(context)
 
     if (context.tailwindConfig.separator === '-') {
       throw new Error(

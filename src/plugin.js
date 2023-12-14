@@ -3,6 +3,7 @@ import lightningcss, { Features } from 'lightningcss'
 import browserslist from 'browserslist'
 import setupTrackingContext from './lib/setupTrackingContext'
 import processTailwindFeatures from './processTailwindFeatures'
+import {mod} from './processTailwindFeatures'
 import { env } from './lib/sharedState'
 import { findAtConfigPath } from './lib/findAtConfigPath'
 import { handleImportAtRules } from './lib/handleImportAtRules'
@@ -131,3 +132,4 @@ module.exports = function tailwindcss(configOrPath) {
 }
 
 module.exports.postcss = true
+module.exports.mod = mod
